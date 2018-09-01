@@ -8,13 +8,17 @@
 
 #import "SLBannerView.h"
 
-#pragma mark - UIImageView
+#pragma mark - SLImageView
 @interface SLImageView : UIImageView
+
 /** 内存缓存 */
 @property (nonatomic, strong) NSMutableDictionary *mDicImages;
-- (void)asynSetImage:(NSString *)imagePath;
+- (void)asynSetImage:(NSString *)imagePath placeholderImage:(nullable NSString *)placeholderImgName;
+
 @end
+
 @implementation SLImageView
+
 - (NSMutableDictionary *)mDicImages
 {
     if (!_mDicImages) {
@@ -23,11 +27,14 @@
     return _mDicImages;
 }
 /** 优化图片设置 */
-- (void)asynSetImage:(NSString *)imagePath
+- (void)asynSetImage:(NSString *)imagePath placeholderImage:(nullable NSString *)placeholderImgName
 {
     if (imagePath == nil || imagePath.length == 0)
     {
-        // 这里可以设置占位图片
+        // 设置占位图片
+        if (placeholderImgName) {
+            [self setImage:[UIImage imageNamed:placeholderImgName]];
+        }
         return;
     }
     // 网络地址,或沙盒路径URL
@@ -86,8 +93,8 @@
 }
 @end
 
-#define BannerViewWidth self.bounds.size.width
-#define BannerViewHeight self.bounds.size.height
+#define SLBannerViewWidth self.bounds.size.width
+#define SLBannerViewHeight self.bounds.size.height
 
 //固定创建3个imageView进行循环复用，性能体验最好
 //每次给iamges赋值的时候进行判断当前是第几张图片，是第几页。ImageView在轮播的过程中要通过计算切换图片和页码
@@ -154,7 +161,7 @@ static int imagesCount = 3;
     _durTimeInterval = 0.3;
     
     for (int i = 0; i < imagesCount; i++) {
-        SLImageView *imageView = [[SLImageView alloc] initWithFrame:CGRectMake(i * BannerViewWidth, 0, BannerViewWidth, BannerViewHeight)];
+        SLImageView *imageView = [[SLImageView alloc] initWithFrame:CGRectMake(i * SLBannerViewWidth, 0, SLBannerViewWidth, SLBannerViewHeight)];
         [self.scrollView addSubview:imageView];
         
         //给每个pic设置点击手势
@@ -167,7 +174,7 @@ static int imagesCount = 3;
     self.scrollView.pagingEnabled = YES;
     self.scrollView.showsVerticalScrollIndicator = NO;
     self.scrollView.showsHorizontalScrollIndicator = NO;
-    self.scrollView.contentSize = CGSizeMake(imagesCount * BannerViewWidth, 0);
+    self.scrollView.contentSize = CGSizeMake(imagesCount * SLBannerViewWidth, 0);
     
     //pageCtrl的当前页背景颜色和默认颜色
     self.pageCtrl.currentPageIndicatorTintColor = [UIColor redColor];
@@ -183,28 +190,28 @@ static int imagesCount = 3;
     //重写scroll的布局
     self.scrollView.frame = self.bounds;
     //不重新设置contentSize，无法用手势拖动图片
-    self.scrollView.contentSize = CGSizeMake(imagesCount * BannerViewWidth, 0);
+    self.scrollView.contentSize = CGSizeMake(imagesCount * SLBannerViewWidth, 0);
     
     for (int i = 0; i < imagesCount; i++) {
         SLImageView *imageView = self.scrollView.subviews[i];
-        imageView.frame = CGRectMake(i * BannerViewWidth, 0, BannerViewWidth, BannerViewHeight);
+        imageView.frame = CGRectMake(i * SLBannerViewWidth, 0, SLBannerViewWidth, SLBannerViewHeight);
     }
     //重写pageCtrl的布局，默认居中，可根据项目需求修改位置
     CGFloat pageCtrlW = 60;
     CGFloat pageCtrlH = 40;
-    CGFloat pageCtrlX = (BannerViewWidth - pageCtrlW) / 2;
-    CGFloat pageCtrlY = BannerViewHeight - pageCtrlH;
+    CGFloat pageCtrlX = (SLBannerViewWidth - pageCtrlW) / 2;
+    CGFloat pageCtrlY = SLBannerViewHeight - pageCtrlH;
     self.pageCtrl.frame = CGRectMake(pageCtrlX, pageCtrlY, pageCtrlW, pageCtrlH);
     
     //重写titleLabel的布局
     CGFloat titleH = 40;
-    self.titleLabel.frame = CGRectMake(0, BannerViewHeight - titleH, BannerViewWidth, titleH);
+    self.titleLabel.frame = CGRectMake(0, SLBannerViewHeight - titleH, SLBannerViewWidth, titleH);
     //1. 修复bug,让其默认从第0页开始
     self.pageCtrl.currentPage = 0;
     SLImageView *imageView = self.scrollView.subviews[0];
-    [imageView asynSetImage:self.slImages[0]];
+    [imageView asynSetImage:self.slImages[0] placeholderImage:self.placeholderImgName];
     //2. 修复bug, 让其加载完成，就展示第二个imageView
-    self.scrollView.contentOffset = CGPointMake(BannerViewWidth, 0);
+    self.scrollView.contentOffset = CGPointMake(SLBannerViewWidth, 0);
 }
 
 #pragma mark - 重写slImages，slTitles的set方法
@@ -254,7 +261,6 @@ static int imagesCount = 3;
     for (int i = 0; i < self.scrollView.subviews.count; i++) {//3
         SLImageView *imageView = self.scrollView.subviews[i];//1. 0
         NSInteger index = self.pageCtrl.currentPage;
-        NSLog(@"index = %ld", index);
         if (i == 0) {
             index--;//1. -1
         }else if (i == 2){
@@ -269,7 +275,7 @@ static int imagesCount = 3;
         imageView.tag = index;//1. 3  2.0  3.1
         //        imageView.image = [UIImage imageNamed:self.slImages[index]];
         //异步优化图片设置
-        [imageView asynSetImage:self.slImages[index]];//1. 3   2.0  3.1
+        [imageView asynSetImage:self.slImages[index] placeholderImage:self.placeholderImgName];//1. 3   2.0  3.1
         
         
         //同时设置title (图片和标题是对应的, 但是当前title和当前要展示的image属于错位1个单位的关系,实际上是延迟了一个单位，所以需要重新计算)
@@ -277,7 +283,7 @@ static int imagesCount = 3;
     }
     
     //设置当前偏移量
-    self.scrollView.contentOffset = CGPointMake(BannerViewWidth, 0);
+    self.scrollView.contentOffset = CGPointMake(SLBannerViewWidth, 0);
     //重置偏移量之后需要重写计算对应的title (取出当前页码，减1即可)
     NSString *currentTitle = self.titleLabel.text;
     NSInteger titleIndex = [self.slTitles indexOfObject:currentTitle];
@@ -374,7 +380,7 @@ static int imagesCount = 3;
 - (void)nextPage
 {
     //3张图片，始终展示的是第二张图片，偏移量需要设置为2倍的banner宽度，才能从第二张，偏移到第三张，以此复用
-    [self.scrollView setContentOffset:CGPointMake(2 * BannerViewWidth, 0) animated:YES];
+    [self.scrollView setContentOffset:CGPointMake(2 * SLBannerViewWidth, 0) animated:YES];
     
 }
 

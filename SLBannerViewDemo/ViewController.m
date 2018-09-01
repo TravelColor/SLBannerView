@@ -36,7 +36,7 @@
                         @"http://img3.duitang.com/uploads/item/201601/03/20160103215632_M48zu.thumb.700_0.jpeg",
                         @"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3531763848,1750613639&fm=26&gp=0.jpg",
                         @"http://www.gx8899.com/uploads/allimg/2017092011/334mgqfbcjw-lp.jpg",
-                        @"http://www.gx8899.com/uploads/allimg/2017092011/pk3iunzqdkd-lp.jpg"];
+                        @""];
     
     //工程图片
 //    banner.slImages = @[@"1.jpg", @"2.jpg", @"3.jpg", @"4.jpg", @"5.jpg"];
@@ -53,6 +53,8 @@
     //6. 可选设置动画，建议动画持续时间小于停留时间
     banner.durTimeInterval = 0.5;
     banner.imgStayTimeInterval = 3;
+    //7.可选设置占位图片
+    banner.placeholderImgName = @"SLPlaceholderImageName.jpg";
 }
 
 /**
@@ -63,11 +65,15 @@
  */
 - (void)bannerView:(SLBannerView *)banner didClickImagesAtIndex:(NSInteger)index
 {
-    NSLog(@"++++++++++点击了%ld ++++++++++", index);
+    NSLog(@"++++++++++宋雷点击了%ld ++++++++++", index);
 }
 
+
+
+
+
 /**
- 思路：
+ 思路及改进：
  1.    构建基本UI
  1.1   封装
  2.    设置scrollView代理
@@ -84,6 +90,7 @@
  10.   利用继承、内存缓存、磁盘缓存、异步并行多线程解决重复下载图片，UI不流畅的问题。先检查内存、磁盘中有没有，没有再下载，有就直接使用。
  11.1.  修复bug,让其默认从第0页开始，给self.pageCtrl.currentPage = 0;，[imageView asynSetImage:self.slImages[0]];
  11.2   修复bug, 让其加载完成，就展示第二个imageView: self.scrollView.contentOffset = CGPointMake(BannerViewWidth, 0);
+ 12. 可选设置占位图片
  */
 
 @end

@@ -21,6 +21,7 @@
 		5EE19522213AA1D60030DE2A /* 5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5EE1951D213AA1D60030DE2A /* 5.jpg */; };
 		5EE19523213AA1D60030DE2A /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5EE1951E213AA1D60030DE2A /* 3.jpg */; };
 		5EE1952A213AA31B0030DE2A /* SLShufflingFigureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EE19528213AA31A0030DE2A /* SLShufflingFigureView.m */; };
+		5EE19696213B40E00030DE2A /* SLPlaceholderImageName.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5EE19695213B40E00030DE2A /* SLPlaceholderImageName.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		5EE1951E213AA1D60030DE2A /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
 		5EE19528213AA31A0030DE2A /* SLShufflingFigureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLShufflingFigureView.m; sourceTree = "<group>"; };
 		5EE19529213AA31B0030DE2A /* SLShufflingFigureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLShufflingFigureView.h; sourceTree = "<group>"; };
+		5EE19695213B40E00030DE2A /* SLPlaceholderImageName.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SLPlaceholderImageName.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 		5EE19513213AA13A0030DE2A /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				5EE19695213B40E00030DE2A /* SLPlaceholderImageName.jpg */,
 				5EE19516213AA14F0030DE2A /* SLBannerView.h */,
 				5EE19514213AA14F0030DE2A /* SLBannerView.m */,
 				5EE19515213AA14F0030DE2A /* SLBannerView.xib */,
@@ -185,6 +188,7 @@
 				5EE19522213AA1D60030DE2A /* 5.jpg in Resources */,
 				5EE19521213AA1D60030DE2A /* 4.jpg in Resources */,
 				5EE1950A213AA11C0030DE2A /* LaunchScreen.storyboard in Resources */,
+				5EE19696213B40E00030DE2A /* SLPlaceholderImageName.jpg in Resources */,
 				5EE19518213AA1500030DE2A /* SLBannerView.xib in Resources */,
 				5EE19507213AA11C0030DE2A /* Assets.xcassets in Resources */,
 				5EE19505213AA11B0030DE2A /* Main.storyboard in Resources */,

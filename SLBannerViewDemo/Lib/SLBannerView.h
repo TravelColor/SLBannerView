@@ -19,19 +19,22 @@
 
 @interface SLBannerView : UIView
 
+/** 必须：sl要展示的图片数组,必须要传入图片（网络，本地，工程图片可用） */
+@property (nonatomic, strong) NSArray *slImages;
+
+/** 可选：要展示的标题数组,可选传入标题 */
+@property (nonatomic, strong) NSArray *slTitles;
 /** 可选：每张图片的停留时间，默认2秒 */
 @property (nonatomic, assign) NSTimeInterval imgStayTimeInterval;
 /** 可选：图片的切换动画持续时间，默认0.3秒 */
 @property (nonatomic, assign) NSTimeInterval durTimeInterval;
-/** 必须：sl要展示的图片数组,必须要传入图片（网络，本地，工程图片可用） */
-@property (nonatomic, strong) NSArray *slImages;
-/** 可选：要展示的标题数组,可选传入标题 */
-@property (nonatomic, strong) NSArray *slTitles;
-
 /** 可选：标题label,可选修改字体大小位置颜色等 */
 @property (nonatomic, weak) UILabel *titleLabel;
 
 @property (nonatomic, weak) id <SLBannerViewDelegate> delegate;
+
+/** 可选：占位图片,可为空 */
+@property (nonatomic, strong, nullable) NSString *placeholderImgName;
 
 /** xib快速构造方法 */
 + (instancetype)bannerViewXib;
