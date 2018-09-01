@@ -74,8 +74,8 @@ NSLog(@"++++++++++宋雷 点击了%ld ++++++++++", index);
 
 ```
 
-/**
-思路及改进：
+
+思路及改进说明：
 1.    构建基本UI
         1.1   封装
 2.    设置scrollView代理
@@ -93,6 +93,7 @@ NSLog(@"++++++++++宋雷 点击了%ld ++++++++++", index);
 12.  修复bug,让其默认从第0页开始，给self.pageCtrl.currentPage = 0;，[imageView asynSetImage:self.slImages[0]];
 13.   修复bug, 让其加载完成，就展示第二个imageView: self.scrollView.contentOffset = CGPointMake(BannerViewWidth, 0);
 14. 可选设置占位图片
-*/
+
+Copyright © 2018年 Travelcolor. All rights reserved.
 
 iOS
