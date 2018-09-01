@@ -95,5 +95,9 @@ NSLog(@"++++++++++宋雷 点击了%ld ++++++++++", index);
 14. 可选设置占位图片
 
 Copyright © 2018年 Travelcolor. All rights reserved.
-
+### 结语
+- 如果你在使用过程中遇到Bug，希望你能Issues我
+- 如果在使用过程中发现功能不够用，希望你能Issues我，我非常想为这个框架增加更多好用的功能，谢谢
+- 如果你想为SLBannerView输出代码，请Pull Requests, 非常感谢
+- 如果好用，请点击star, 万分感谢
 iOS
