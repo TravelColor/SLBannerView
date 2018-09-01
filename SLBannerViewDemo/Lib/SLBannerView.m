@@ -9,11 +9,19 @@
 #import "SLBannerView.h"
 
 #pragma mark - UIImageView
-@interface UIImageView (AsynSetImage)
+@interface SLImageView : UIImageView
+/** 内存缓存 */
+@property (nonatomic, strong) NSMutableDictionary *mDicImages;
 - (void)asynSetImage:(NSString *)imagePath;
 @end
-@implementation UIImageView (AsynSetImage)
-
+@implementation SLImageView
+- (NSMutableDictionary *)mDicImages
+{
+    if (!_mDicImages) {
+        _mDicImages = [NSMutableDictionary dictionary];
+    }
+    return _mDicImages;
+}
 /** 优化图片设置 */
 - (void)asynSetImage:(NSString *)imagePath
 {
@@ -25,20 +33,48 @@
     // 网络地址,或沙盒路径URL
     if ([imagePath containsString:@"http"] || [imagePath containsString:@"file://"])
     {
-        //便于在block中使用
-        __block UIImage *image = [[UIImage alloc] init];
-        dispatch_async(dispatch_get_global_queue(0, 0), ^{
-            //网络下载图片 NSData格式
-            NSError *error;
-            NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imagePath] options:NSDataReadingMappedIfSafe error:&error];
-            if (imageData) {
-                image = [UIImage imageWithData:imageData];
+        //1. __block 便于在block中使用 2.尝试去内存中取图片
+        __block UIImage *image = [self.mDicImages objectForKey:imagePath];
+        //如果内存中有，直接赋值，否则检查磁盘缓存
+        if (image) {
+            [self setImage:image];
+        }else{
+            //2. 保存图片到沙盒缓存
+            NSString *cachesPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
+            //2.1 获得图片的名称，不包含/
+            NSString *imageName = [imagePath lastPathComponent];
+            //2.2 拼接图片的全路径
+            NSString *fullPath = [cachesPath stringByAppendingPathComponent:imageName];
+            
+            NSData *imageDataCaches = [NSData dataWithContentsOfFile:fullPath];
+            //检查磁盘缓存，如果磁盘中有，直接赋值, 没有就下载
+            if (imageDataCaches) {
+                UIImage *imageCaches = [UIImage imageWithData:imageDataCaches];
+                [self setImage:imageCaches];
+                //并保存到内存中
+                [self.mDicImages setObject:imageCaches forKey:imagePath];
+                
+            }else{
+                dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                    //网络下载图片 NSData格式
+                    NSError *error;
+                    NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imagePath] options:NSDataReadingMappedIfSafe error:&error];
+                    if (imageData) {
+                        image = [UIImage imageWithData:imageData];
+                        
+                        //1. 下载完图片之后保存到内存中
+                        [self.mDicImages setObject:image forKey:imagePath];
+                        
+                        //2.3 写数据到磁盘
+                        [imageData writeToFile:fullPath atomically:YES];
+                    }
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self setImage:image];
+                    });
+                });
             }
-            //回到主线程刷新UI
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self setImage:image];
-            });
-        });
+        }
+        
         return;
     }
     
@@ -118,7 +154,7 @@ static int imagesCount = 3;
     _durTimeInterval = 0.3;
     
     for (int i = 0; i < imagesCount; i++) {
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i * BannerViewWidth, 0, BannerViewWidth, BannerViewHeight)];
+        SLImageView *imageView = [[SLImageView alloc] initWithFrame:CGRectMake(i * BannerViewWidth, 0, BannerViewWidth, BannerViewHeight)];
         [self.scrollView addSubview:imageView];
         
         //给每个pic设置点击手势
@@ -150,7 +186,7 @@ static int imagesCount = 3;
     self.scrollView.contentSize = CGSizeMake(imagesCount * BannerViewWidth, 0);
     
     for (int i = 0; i < imagesCount; i++) {
-        UIImageView *imageView = self.scrollView.subviews[i];
+        SLImageView *imageView = self.scrollView.subviews[i];
         imageView.frame = CGRectMake(i * BannerViewWidth, 0, BannerViewWidth, BannerViewHeight);
     }
     //重写pageCtrl的布局，默认居中，可根据项目需求修改位置
@@ -163,6 +199,10 @@ static int imagesCount = 3;
     //重写titleLabel的布局
     CGFloat titleH = 40;
     self.titleLabel.frame = CGRectMake(0, BannerViewHeight - titleH, BannerViewWidth, titleH);
+    //默认从第0页开始
+    self.pageCtrl.currentPage = 0;
+    SLImageView *imageView = self.scrollView.subviews[0];
+    [imageView asynSetImage:self.slImages[0]];
 }
 
 #pragma mark - 重写slImages，slTitles的set方法
@@ -186,6 +226,7 @@ static int imagesCount = 3;
         //开始定时器
         [self startTimer];
     }
+    
 }
 
 - (void)setSlTitles:(NSArray *)slTitles
@@ -207,29 +248,30 @@ static int imagesCount = 3;
 /** 设置内容 */
 - (void)setupContent
 {
-     // 这是一个循环 设置图片，页码
-    for (int i = 0; i < self.scrollView.subviews.count; i++) {
-        UIImageView *imageView = self.scrollView.subviews[i];
+    // 这是一个循环 设置图片，页码，复用UIImageView
+    for (int i = 0; i < self.scrollView.subviews.count; i++) {//3
+        SLImageView *imageView = self.scrollView.subviews[i];//1. 0
         NSInteger index = self.pageCtrl.currentPage;
+        NSLog(@"index = %ld", index);
         if (i == 0) {
-            index--;
+            index--;//1. -1
         }else if (i == 2){
-            index++;
+            index++;//
         }
         
         if (index < 0) {
-            index = self.pageCtrl.numberOfPages - 1;
+            index = self.pageCtrl.numberOfPages - 1;//1. 3
         }else if (index >= self.pageCtrl.numberOfPages){
             index = 0;
         }
-        imageView.tag = index;
-//        imageView.image = [UIImage imageNamed:self.slImages[index]];
+        imageView.tag = index;//1. 3  2.0  3.1
+        //        imageView.image = [UIImage imageNamed:self.slImages[index]];
         //异步优化图片设置
-        [imageView asynSetImage:self.slImages[index]];
+        [imageView asynSetImage:self.slImages[index]];//1. 3   2.0  3.1
         
         
         //同时设置title (图片和标题是对应的, 但是当前title和当前要展示的image属于错位1个单位的关系,实际上是延迟了一个单位，所以需要重新计算)
-        self.titleLabel.text = self.slTitles[index];
+        self.titleLabel.text = self.slTitles[index];//1. 3  2. 0  3.1
     }
     
     //设置当前偏移量
@@ -256,7 +298,7 @@ static int imagesCount = 3;
     NSInteger page = 0;
     CGFloat minDistance = MAXFLOAT;
     for (int i = 0; i < self.scrollView.subviews.count; i++) {
-        UIImageView *imageView = self.scrollView.subviews[i];
+        SLImageView *imageView = self.scrollView.subviews[i];
         CGFloat distance = 0;
         distance = ABS(imageView.frame.origin.x - scrollView.contentOffset.x);//整数绝对值
         if (distance < minDistance) {
@@ -331,18 +373,18 @@ static int imagesCount = 3;
 {
     //3张图片，始终展示的是第二张图片，偏移量需要设置为2倍的banner宽度，才能从第二张，偏移到第三张，以此复用
     [self.scrollView setContentOffset:CGPointMake(2 * BannerViewWidth, 0) animated:YES];
-
+    
 }
 
 #pragma mark - SLBannerViewDelegate代理方法，监听点击的哪一个imageView
 /**
  点击了哪一张图片
-
+ 
  @param tap 手势点击
  */
 - (void)imageViewClicked:(UITapGestureRecognizer *)tap
 {
-    UIImageView *imageView = (UIImageView *)tap.view;
+    SLImageView *imageView = (SLImageView *)tap.view;
     if ([self.delegate respondsToSelector:@selector(bannerView:didClickImagesAtIndex:)]) {
         [self.delegate bannerView:self didClickImagesAtIndex:imageView.tag];
     }
