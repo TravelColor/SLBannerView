@@ -65,32 +65,7 @@
  */
 - (void)bannerView:(SLBannerView *)banner didClickImagesAtIndex:(NSInteger)index
 {
-    NSLog(@"++++++++++宋雷点击了%ld ++++++++++", index);
+    NSLog(@"++++++++++宋雷 点击了%ld ++++++++++", index);
 }
-
-
-
-
-
-/**
- 思路及改进：
- 1.    构建基本UI
- 1.1   封装
- 2.    设置scrollView代理
- 3.    添加scrollView的image
- 4.    分页
- 5.    定时器滚动起来
- 5.1   定时器线程阻塞问题：
-        原因：NSTimer 默认是放到系统的主线程的，当用户操作其他主线程任务时，会造成NSTimer的线程阻塞，用户停止其他操作时又会重启NSTimer
-        解决：设置timer在runloop中模式为CommonModes
- 6.    解决轮播图片过多的性能问题，循环重用ImageView
- 7.    添加xib创建方法
- 8.    巧用代理UIScrollViewDelegate，scrollViewDidScroll:定位当前正确的页数，找出最中间的哪个图片控件
- 9.    用SLBannerViewDelegate实现监听点击事件
- 10.   利用继承、内存缓存、磁盘缓存、异步并行多线程解决重复下载图片，UI不流畅的问题。先检查内存、磁盘中有没有，没有再下载，有就直接使用。
- 11.1.  修复bug,让其默认从第0页开始，给self.pageCtrl.currentPage = 0;，[imageView asynSetImage:self.slImages[0]];
- 11.2   修复bug, 让其加载完成，就展示第二个imageView: self.scrollView.contentOffset = CGPointMake(BannerViewWidth, 0);
- 12. 可选设置占位图片
- */
 
 @end
