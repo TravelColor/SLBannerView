@@ -199,10 +199,12 @@ static int imagesCount = 3;
     //重写titleLabel的布局
     CGFloat titleH = 40;
     self.titleLabel.frame = CGRectMake(0, BannerViewHeight - titleH, BannerViewWidth, titleH);
-    //默认从第0页开始
+    //1. 修复bug,让其默认从第0页开始
     self.pageCtrl.currentPage = 0;
     SLImageView *imageView = self.scrollView.subviews[0];
     [imageView asynSetImage:self.slImages[0]];
+    //2. 修复bug, 让其加载完成，就展示第二个imageView
+    self.scrollView.contentOffset = CGPointMake(BannerViewWidth, 0);
 }
 
 #pragma mark - 重写slImages，slTitles的set方法
