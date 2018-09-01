@@ -1,7 +1,7 @@
 //
 //  SLBannerView.m
-//  ShufflingDemo
-//
+//  SLBannerViewDemo <https://github.com/TravelColor/SLBannerView>
+//  个人邮箱：songleitravel@163.com
 //  Created by 宋雷 on 2018/8/31.
 //  Copyright © 2018年 Travelcolor. All rights reserved.
 //
@@ -27,7 +27,7 @@
 {
     if (imagePath == nil || imagePath.length == 0)
     {
-        // 这里可以设置站位图片
+        // 这里可以设置占位图片
         return;
     }
     // 网络地址,或沙盒路径URL

@@ -1,7 +1,7 @@
 //
 //  SLBannerView.h
-//  ShufflingDemo
-//
+//  SLBannerViewDemo <https://github.com/TravelColor/SLBannerView>
+//  个人邮箱：songleitravel@163.com
 //  Created by 宋雷 on 2018/8/31.
 //  Copyright © 2018年 Travelcolor. All rights reserved.
 //
@@ -19,16 +19,16 @@
 
 @interface SLBannerView : UIView
 
-/** 每张图片的停留时间，默认2秒 */
+/** 可选：每张图片的停留时间，默认2秒 */
 @property (nonatomic, assign) NSTimeInterval imgStayTimeInterval;
-/** 图片的切换动画持续时间，默认0.3秒 */
+/** 可选：图片的切换动画持续时间，默认0.3秒 */
 @property (nonatomic, assign) NSTimeInterval durTimeInterval;
-/** sl要展示的图片数组,必须要传入图片（网络，本地，工程图片可用） */
+/** 必须：sl要展示的图片数组,必须要传入图片（网络，本地，工程图片可用） */
 @property (nonatomic, strong) NSArray *slImages;
-/** 要展示的标题数组,可选传入标题 */
+/** 可选：要展示的标题数组,可选传入标题 */
 @property (nonatomic, strong) NSArray *slTitles;
 
-/** 标题label,可选修改字体大小位置颜色 */
+/** 可选：标题label,可选修改字体大小位置颜色等 */
 @property (nonatomic, weak) UILabel *titleLabel;
 
 @property (nonatomic, weak) id <SLBannerViewDelegate> delegate;
