@@ -8,14 +8,15 @@ Pod::Spec.new do |s|
 
   s.homepage     = "https://github.com/TravelColor/SLBannerView"
 
-  s.license      = "MIT"
+  s.license      = { :type => 'MIT', :file => 'LICENSE' }
 
   s.author             = { "Travelcolor" => "978388776@qq.com" }
-  s.platform     = :ios, "8.0"         
+     
   s.source       = { :git => "https://github.com/TravelColor/SLBannerView.git", :tag => "1.0.0" }
 
   s.source_files  = "SLBannerViewDemo/SLBannerView", "SLBannerViewDemo/SLBannerView/*.{h,m}"
   s.resource_bundles = {'SLBannerView' => ['SLBannerViewDemo/SLBannerView/*.jpg']}
+  s.platform     = :ios, '8.0'
   s.requires_arc = true
 
   # s.exclude_files = "Classes/Exclude"
