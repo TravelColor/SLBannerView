@@ -1,10 +1,19 @@
-# SLBannerView
+# SLBannerView【快捷创建高性能轮播图】
 The advertising rotation diagram in the App is packaged into an independent module to simplify the development process
 
 -  SLBannerViewDemo <https://github.com/TravelColor/SLBannerView>
 -  个人邮箱：songleitravel@163.com
 
-## 基本使用
+## Installation 【安装】
+### From CocoaPods 【使用CocoaPods】
+```
+//最新版本
+ pod 'SLBannerView'
+ 或者
+ //指定版本
+ pod 'SLBannerView', '~> 1.0.2'
+```
+## The basic use 【基本使用】
 -   下载好SLBannerView, 只需要将工程内的同名文件夹导入项目中即可使用！使用简单！开发效率高
 ```objc
 
@@ -93,6 +102,18 @@ NSLog(@"++++++++++宋雷 点击了%ld ++++++++++", index);
 12.  修复bug,让其默认从第0页开始，给self.pageCtrl.currentPage = 0;，[imageView asynSetImage:self.slImages[0]];
 13.   修复bug, 让其加载完成，就展示第二个imageView: self.scrollView.contentOffset = CGPointMake(BannerViewWidth, 0);
 14. 可选设置占位图片
+
+ - 版本1.0.2 删除占位图片
+ ```objc
+ 
+ // 设置占位图片，pods不显示
+ 
+ //        if (placeholderImgName) {
+ //         [self setImage:[UIImage imageNamed:placeholderImgName]];//pods导入后，不显示占位图。直接拖到工程里可以显示
+ //            NSBundle *bundle = [NSBundle bundleWithIdentifier:@"org.cocoapods.SLBannerView"];
+ //            [self setImage:[UIImage imageNamed:@"SLPlaceholderImageName.jpg" inBundle:bundle compatibleWithTraitCollection:nil]];//查百度的方法，也不显示。后续再更新。如果有好的方法和建议， 请Pull Requests我
+ //        }
+ ```
 
 Copyright © 2018年 Travelcolor. All rights reserved.
 ### 结语
