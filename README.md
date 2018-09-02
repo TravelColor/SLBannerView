@@ -112,7 +112,7 @@ NSLog(@"++++++++++宋雷 点击了%ld ++++++++++", index);
  //        }
  ```
 - 参考了部分百度思路，自己封装。暂未发现bug
-Copyright © 2018年 Travelcolor. All rights reserved.
+- Copyright © 2018年 Travelcolor. All rights reserved.
 ### 结语
 - 如果你在使用过程中遇到Bug，希望你能Issues我
 - 如果在使用过程中发现功能不够用，希望你能Issues我，我非常想为这个框架增加更多好用的功能，谢谢
