@@ -35,14 +35,14 @@
                         @"2.jpg",
                         @"http://img3.duitang.com/uploads/item/201601/03/20160103215632_M48zu.thumb.700_0.jpeg",
                         @"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3531763848,1750613639&fm=26&gp=0.jpg",
-                        @"http://www.gx8899.com/uploads/allimg/2017092011/334mgqfbcjw-lp.jpg",
-                        @"3.jpg"];
+                        @"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535866967519&di=5faf2fc5574462a62fae61b81b5a0935&imgtype=0&src=http%3A%2F%2Fpic31.nipic.com%2F20130708%2F7447430_090100939000_2.jpg",
+                        @"http://img.zcool.cn/community/01b34f58eee017a8012049efcfaf50.jpg@1280w_1l_2o_100sh.jpg"];
     
     //工程图片
 //    banner.slImages = @[@"1.jpg", @"2.jpg", @"3.jpg", @"4.jpg", @"5.jpg"];
     
     //可选：设置标题
-//    banner.slTitles = @[@"第1张图片的标题", @"第2张图片的标题", @"第3张图片的标题", @"第4张图片的标题",@" 第5张图片的标题"];
+    banner.slTitles = @[@"第1张图片的标题", @"第2张图片的标题", @"第3张图片的标题", @"第4张图片的标题",@" 第5张图片的标题"];
     
     [banner.titleLabel setTextColor:[UIColor yellowColor]];
     //4. 监听设置代理
