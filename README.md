@@ -98,7 +98,7 @@ NSLog(@"++++++++++宋雷 点击了%ld ++++++++++", index);
 11.   利用继承、内存缓存、磁盘缓存、异步并行多线程解决重复下载图片，UI不流畅的问题。先检查内存、磁盘中有没有，没有再下载，有就直接使用。
 12.  修复bug,让其默认从第0页开始，给self.pageCtrl.currentPage = 0;，[imageView asynSetImage:self.slImages[0]];
 13.   修复bug, 让其加载完成，就展示第二个imageView: self.scrollView.contentOffset = CGPointMake(BannerViewWidth, 0);
-14. 可选设置占位图片
+14.  可选设置占位图片
 
  - 版本1.0.2 删除占位图片
  ```objc
@@ -111,8 +111,8 @@ NSLog(@"++++++++++宋雷 点击了%ld ++++++++++", index);
  //            [self setImage:[UIImage imageNamed:@"SLPlaceholderImageName.jpg" inBundle:bundle compatibleWithTraitCollection:nil]];//查百度的方法，也不显示。后续再更新。如果有好的方法和建议， 请Pull Requests我
  //        }
  ```
-
-Copyright © 2018年 Travelcolor. All rights reserved.
+- 参考了部分百度思路，自己封装。暂未发现bug
+- Copyright © 2018年 Travelcolor. All rights reserved.
 ### 结语
 - 如果你在使用过程中遇到Bug，希望你能Issues我
 - 如果在使用过程中发现功能不够用，希望你能Issues我，我非常想为这个框架增加更多好用的功能，谢谢
