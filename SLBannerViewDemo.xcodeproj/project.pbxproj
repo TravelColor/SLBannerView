@@ -13,15 +13,14 @@
 		5EE19507213AA11C0030DE2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EE19506213AA11C0030DE2A /* Assets.xcassets */; };
 		5EE1950A213AA11C0030DE2A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EE19508213AA11C0030DE2A /* LaunchScreen.storyboard */; };
 		5EE1950D213AA11C0030DE2A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EE1950C213AA11C0030DE2A /* main.m */; };
-		5EE19517213AA14F0030DE2A /* SLBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EE19514213AA14F0030DE2A /* SLBannerView.m */; };
-		5EE19518213AA1500030DE2A /* SLBannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EE19515213AA14F0030DE2A /* SLBannerView.xib */; };
 		5EE1951F213AA1D60030DE2A /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5EE1951A213AA1D60030DE2A /* 1.jpg */; };
 		5EE19520213AA1D60030DE2A /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5EE1951B213AA1D60030DE2A /* 2.jpg */; };
 		5EE19521213AA1D60030DE2A /* 4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5EE1951C213AA1D60030DE2A /* 4.jpg */; };
 		5EE19522213AA1D60030DE2A /* 5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5EE1951D213AA1D60030DE2A /* 5.jpg */; };
 		5EE19523213AA1D60030DE2A /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5EE1951E213AA1D60030DE2A /* 3.jpg */; };
-		5EE1952A213AA31B0030DE2A /* SLShufflingFigureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EE19528213AA31A0030DE2A /* SLShufflingFigureView.m */; };
-		5EE19696213B40E00030DE2A /* SLPlaceholderImageName.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5EE19695213B40E00030DE2A /* SLPlaceholderImageName.jpg */; };
+		5EE1969C213B5DE90030DE2A /* SLBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EE19698213B5DE90030DE2A /* SLBannerView.m */; };
+		5EE1969D213B5DE90030DE2A /* SLBannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EE19699213B5DE90030DE2A /* SLBannerView.xib */; };
+		5EE1969E213B5DE90030DE2A /* SLPlaceholderImageName.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5EE1969B213B5DE90030DE2A /* SLPlaceholderImageName.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,17 +34,15 @@
 		5EE19509213AA11C0030DE2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5EE1950B213AA11C0030DE2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5EE1950C213AA11C0030DE2A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		5EE19514213AA14F0030DE2A /* SLBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLBannerView.m; sourceTree = "<group>"; };
-		5EE19515213AA14F0030DE2A /* SLBannerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SLBannerView.xib; sourceTree = "<group>"; };
-		5EE19516213AA14F0030DE2A /* SLBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLBannerView.h; sourceTree = "<group>"; };
 		5EE1951A213AA1D60030DE2A /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
 		5EE1951B213AA1D60030DE2A /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
 		5EE1951C213AA1D60030DE2A /* 4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4.jpg; sourceTree = "<group>"; };
 		5EE1951D213AA1D60030DE2A /* 5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 5.jpg; sourceTree = "<group>"; };
 		5EE1951E213AA1D60030DE2A /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
-		5EE19528213AA31A0030DE2A /* SLShufflingFigureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLShufflingFigureView.m; sourceTree = "<group>"; };
-		5EE19529213AA31B0030DE2A /* SLShufflingFigureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLShufflingFigureView.h; sourceTree = "<group>"; };
-		5EE19695213B40E00030DE2A /* SLPlaceholderImageName.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SLPlaceholderImageName.jpg; sourceTree = "<group>"; };
+		5EE19698213B5DE90030DE2A /* SLBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLBannerView.m; sourceTree = "<group>"; };
+		5EE19699213B5DE90030DE2A /* SLBannerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SLBannerView.xib; sourceTree = "<group>"; };
+		5EE1969A213B5DE90030DE2A /* SLBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLBannerView.h; sourceTree = "<group>"; };
+		5EE1969B213B5DE90030DE2A /* SLPlaceholderImageName.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SLPlaceholderImageName.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,12 +76,11 @@
 			isa = PBXGroup;
 			children = (
 				5EE19519213AA1AB0030DE2A /* Resouces */,
-				5EE19513213AA13A0030DE2A /* Lib */,
+				5EE19697213B5DE90030DE2A /* SLBannerView */,
 				5EE19500213AA11B0030DE2A /* ViewController.h */,
 				5EE19501213AA11B0030DE2A /* ViewController.m */,
 				5EE194FD213AA11B0030DE2A /* AppDelegate.h */,
 				5EE194FE213AA11B0030DE2A /* AppDelegate.m */,
-				5EE19524213AA2260030DE2A /* 简单的轮播封装（未解决图片复用问题，可帮助理解） */,
 				5EE19503213AA11B0030DE2A /* Main.storyboard */,
 				5EE19506213AA11C0030DE2A /* Assets.xcassets */,
 				5EE19508213AA11C0030DE2A /* LaunchScreen.storyboard */,
@@ -92,17 +88,6 @@
 				5EE1950C213AA11C0030DE2A /* main.m */,
 			);
 			path = SLBannerViewDemo;
-			sourceTree = "<group>";
-		};
-		5EE19513213AA13A0030DE2A /* Lib */ = {
-			isa = PBXGroup;
-			children = (
-				5EE19695213B40E00030DE2A /* SLPlaceholderImageName.jpg */,
-				5EE19516213AA14F0030DE2A /* SLBannerView.h */,
-				5EE19514213AA14F0030DE2A /* SLBannerView.m */,
-				5EE19515213AA14F0030DE2A /* SLBannerView.xib */,
-			);
-			path = Lib;
 			sourceTree = "<group>";
 		};
 		5EE19519213AA1AB0030DE2A /* Resouces */ = {
@@ -117,14 +102,17 @@
 			path = Resouces;
 			sourceTree = "<group>";
 		};
-		5EE19524213AA2260030DE2A /* 简单的轮播封装（未解决图片复用问题，可帮助理解） */ = {
+		5EE19697213B5DE90030DE2A /* SLBannerView */ = {
 			isa = PBXGroup;
 			children = (
-				5EE19529213AA31B0030DE2A /* SLShufflingFigureView.h */,
-				5EE19528213AA31A0030DE2A /* SLShufflingFigureView.m */,
+				5EE19699213B5DE90030DE2A /* SLBannerView.xib */,
+				5EE1969A213B5DE90030DE2A /* SLBannerView.h */,
+				5EE19698213B5DE90030DE2A /* SLBannerView.m */,
+				5EE1969B213B5DE90030DE2A /* SLPlaceholderImageName.jpg */,
 			);
-			path = "简单的轮播封装（未解决图片复用问题，可帮助理解）";
-			sourceTree = "<group>";
+			name = SLBannerView;
+			path = SLBannerViewDemo/SLBannerView;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -183,13 +171,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EE1969D213B5DE90030DE2A /* SLBannerView.xib in Resources */,
 				5EE19523213AA1D60030DE2A /* 3.jpg in Resources */,
 				5EE19520213AA1D60030DE2A /* 2.jpg in Resources */,
 				5EE19522213AA1D60030DE2A /* 5.jpg in Resources */,
 				5EE19521213AA1D60030DE2A /* 4.jpg in Resources */,
+				5EE1969E213B5DE90030DE2A /* SLPlaceholderImageName.jpg in Resources */,
 				5EE1950A213AA11C0030DE2A /* LaunchScreen.storyboard in Resources */,
-				5EE19696213B40E00030DE2A /* SLPlaceholderImageName.jpg in Resources */,
-				5EE19518213AA1500030DE2A /* SLBannerView.xib in Resources */,
 				5EE19507213AA11C0030DE2A /* Assets.xcassets in Resources */,
 				5EE19505213AA11B0030DE2A /* Main.storyboard in Resources */,
 				5EE1951F213AA1D60030DE2A /* 1.jpg in Resources */,
@@ -204,8 +192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5EE19502213AA11B0030DE2A /* ViewController.m in Sources */,
-				5EE1952A213AA31B0030DE2A /* SLShufflingFigureView.m in Sources */,
-				5EE19517213AA14F0030DE2A /* SLBannerView.m in Sources */,
+				5EE1969C213B5DE90030DE2A /* SLBannerView.m in Sources */,
 				5EE1950D213AA11C0030DE2A /* main.m in Sources */,
 				5EE194FF213AA11B0030DE2A /* AppDelegate.m in Sources */,
 			);

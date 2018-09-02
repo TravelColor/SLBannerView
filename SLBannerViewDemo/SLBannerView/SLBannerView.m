@@ -117,7 +117,9 @@ static int imagesCount = 3;
 /** xib快速构造方法 */
 + (instancetype)bannerViewXib
 {
-    return [[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self) owner:nil options:nil].lastObject;
+//    return [[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self) owner:nil options:nil].lastObject;
+#define SLBannerViewBundle [NSBundle bundleForClass:[self class]]
+    return [SLBannerViewBundle loadNibNamed:NSStringFromClass(self) owner:nil options:nil].lastObject;
 }
 
 /** xib 创建 */
