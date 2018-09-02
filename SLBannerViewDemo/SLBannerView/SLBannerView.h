@@ -33,9 +33,6 @@
 
 @property (nonatomic, weak) id <SLBannerViewDelegate> delegate;
 
-/** 可选：占位图片,可为空 */
-@property (nonatomic, strong, nullable) NSString *placeholderImgName;
-
 /** xib快速构造方法 */
 + (instancetype)bannerViewXib;
 /** 代码快速构造方法 */

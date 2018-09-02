@@ -30,13 +30,13 @@
     //2. banner 的位置和大小
     banner.frame = CGRectMake(0, 50, SLBannerWidth, SLBannerWidth);
     
-    //3. 必须：需要传入的图片数组和可选的标题数组
+    //3. 必须：需要传入的图片数组和可选的标题数组，图片不能为空
     banner.slImages = @[
                         @"2.jpg",
                         @"http://img3.duitang.com/uploads/item/201601/03/20160103215632_M48zu.thumb.700_0.jpeg",
                         @"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3531763848,1750613639&fm=26&gp=0.jpg",
                         @"http://www.gx8899.com/uploads/allimg/2017092011/334mgqfbcjw-lp.jpg",
-                        @""];
+                        @"3.jpg"];
     
     //工程图片
 //    banner.slImages = @[@"1.jpg", @"2.jpg", @"3.jpg", @"4.jpg", @"5.jpg"];
@@ -53,8 +53,6 @@
     //6. 可选设置动画，建议动画持续时间小于停留时间
     banner.durTimeInterval = 0.5;
     banner.imgStayTimeInterval = 3;
-    //7.可选设置占位图片
-    banner.placeholderImgName = @"SLPlaceholderImageName.jpg";
 }
 
 /**
