@@ -73,7 +73,7 @@ SLBannerViewDelegate Method
 */
 - (void)bannerView:(SLBannerView *)banner didClickImagesAtIndex:(NSInteger)index
 {
-NSLog(@"++++++++++宋雷 点击了%ld ++++++++++", index);
+NSLog(@"++++++++++songlei 点击了%ld ++++++++++", index);
 }
 
 @end
