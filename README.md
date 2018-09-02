@@ -55,9 +55,6 @@ banner.delegate = self;
 //6. 可选设置动画，建议动画持续时间小于停留时间
 banner.durTimeInterval = 0.5;
 banner.imgStayTimeInterval = 3;
-//7.可选设置占位图片
-banner.placeholderImgName = @"SLPlaceholderImageName.jpg";
-}
 
 /**
 SLBannerViewDelegate Method
