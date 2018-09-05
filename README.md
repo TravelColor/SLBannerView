@@ -11,7 +11,7 @@ The advertising rotation diagram in the App is packaged into an independent modu
  pod 'SLBannerView'
  或者
  //指定版本
- pod 'SLBannerView', '~> 1.0.2'
+ pod 'SLBannerView', '~> 1.0.3'
 ```
 ## The basic use 【基本使用】
 -   下载好SLBannerView, 只需要将工程内的同名文件夹导入项目中即可使用！使用简单！开发效率高
@@ -41,13 +41,17 @@ SLBannerView *banner = [SLBannerView bannerView];
 //2. banner 的位置和大小
 banner.frame = CGRectMake(0, 50, SLBannerWidth, SLBannerWidth);
 
+//7.如果将要传入的数组有空值或图片路径不正确，建议在传入前设置占位图,否则第一次运行不显示占位图，
+//  如果将要传入的数组不为空和图片路径都正确，占位图可不设
+banner.placeholderImg = [UIImage imageNamed:@"SLPlaceholderImageName.jpg"];
+
 //3. 必须：需要传入的图片数组和可选的标题数组
 banner.slImages = @[
 @"2.jpg",
 @"http://img3.duitang.com/uploads/item/201601/03/20160103215632_M48zu.thumb.700_0.jpeg",
 @"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3531763848,1750613639&fm=26&gp=0.jpg",
 @"http://www.gx8899.com/uploads/allimg/2017092011/334mgqfbcjw-lp.jpg",
-@""];
+@"未知路径，建议设置占位图"];
 
 //工程图片
 //    banner.slImages = @[@"1.jpg", @"2.jpg", @"3.jpg", @"4.jpg", @"5.jpg"];
@@ -98,9 +102,9 @@ NSLog(@"++++++++++宋雷 点击了%ld ++++++++++", index);
 11.   利用继承、内存缓存、磁盘缓存、异步并行多线程解决重复下载图片，UI不流畅的问题。先检查内存、磁盘中有没有，没有再下载，有就直接使用。
 12.  修复bug,让其默认从第0页开始，给self.pageCtrl.currentPage = 0;，[imageView asynSetImage:self.slImages[0]];
 13.   修复bug, 让其加载完成，就展示第二个imageView: self.scrollView.contentOffset = CGPointMake(BannerViewWidth, 0);
-14.  可选设置占位图片
-
- - 版本1.0.2 删除占位图片
+14.  如果将要传入的数组有空值或图片路径不正确，建议在传入前设置占位图
+- 版本1.0.2 删除占位图片
+- 版本1.0.3 增加占位图片
  ```objc
  
  // 设置占位图片，pods不显示
@@ -111,7 +115,7 @@ NSLog(@"++++++++++宋雷 点击了%ld ++++++++++", index);
  //            [self setImage:[UIImage imageNamed:@"SLPlaceholderImageName.jpg" inBundle:bundle compatibleWithTraitCollection:nil]];//查百度的方法，也不显示。后续再更新。如果有好的方法和建议， 请Pull Requests我
  //        }
  ```
-- 参考了部分百度思路，自己封装。暂未发现bug
+- 查阅了部分百度知识点，自己封装，在维护。暂未发现bug
 - Copyright © 2018年 Travelcolor. All rights reserved.
 ### 结语
 - 如果你在使用过程中遇到Bug，希望你能Issues我

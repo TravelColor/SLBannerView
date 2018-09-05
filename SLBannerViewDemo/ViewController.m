@@ -30,11 +30,15 @@
     //2. banner 的位置和大小
     banner.frame = CGRectMake(0, 50, SLBannerWidth, SLBannerWidth);
     
-    //3. 必须：需要传入的图片数组和可选的标题数组，图片不能为空
+    
+    //7.如果将要传入的数组有空值或图片路径不正确，建议在传入前设置占位图,否则第一次运行不显示占位图，
+    //如果将要传入的数组不为空和图片路径都正确，占位图可不设
+    banner.placeholderImg = [UIImage imageNamed:@"SLPlaceholderImageName.jpg"];
+    //3. 必须：需要传入的图片数组，设置了占位图，数组可以传空
     banner.slImages = @[
                         @"2.jpg",
                         @"http://img3.duitang.com/uploads/item/201601/03/20160103215632_M48zu.thumb.700_0.jpeg",
-                        @"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3531763848,1750613639&fm=26&gp=0.jpg",
+                        @"未知路径，显示占位图",
                         @"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535866967519&di=5faf2fc5574462a62fae61b81b5a0935&imgtype=0&src=http%3A%2F%2Fpic31.nipic.com%2F20130708%2F7447430_090100939000_2.jpg",
                         @"http://img.zcool.cn/community/01b34f58eee017a8012049efcfaf50.jpg@1280w_1l_2o_100sh.jpg"];
     
@@ -53,6 +57,7 @@
     //6. 可选设置动画，建议动画持续时间小于停留时间
     banner.durTimeInterval = 0.5;
     banner.imgStayTimeInterval = 3;
+    
 }
 
 /**

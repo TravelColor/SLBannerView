@@ -30,6 +30,8 @@
 @property (nonatomic, assign) NSTimeInterval durTimeInterval;
 /** 可选：标题label,可选修改字体大小位置颜色等 */
 @property (nonatomic, weak) UILabel *titleLabel;
+/** 根据项目需求传入占位图片 */
+@property (nonatomic, strong) UIImage *placeholderImg;
 
 @property (nonatomic, weak) id <SLBannerViewDelegate> delegate;
 

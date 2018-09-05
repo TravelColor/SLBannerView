@@ -13,7 +13,7 @@
 
 /** 内存缓存 */
 @property (nonatomic, strong) NSMutableDictionary *mDicImages;
-- (void)asynSetImage:(NSString *)imagePath;
+- (void)asynSetImage:(NSString *)imagePath placeholderImage:(UIImage *)placeholderImg;
 
 @end
 
@@ -27,17 +27,14 @@
     return _mDicImages;
 }
 /** 优化图片设置 */
-- (void)asynSetImage:(NSString *)imagePath
+- (void)asynSetImage:(NSString *)imagePath placeholderImage:(UIImage *)placeholderImg
 {
     if (imagePath == nil || imagePath.length == 0)
     {
-        // 设置占位图片，pods不显示
-        
-//        if (placeholderImgName) {
-//         [self setImage:[UIImage imageNamed:placeholderImgName]];//不显示占位图
-//            NSBundle *bundle = [NSBundle bundleWithIdentifier:@"org.cocoapods.SLBannerView"];
-//            [self setImage:[UIImage imageNamed:@"SLPlaceholderImageName.jpg" inBundle:bundle compatibleWithTraitCollection:nil]];//查百度的方法，也不显示
-//        }
+        //改进：设置占位图片
+        if (placeholderImg) {
+         [self setImage:placeholderImg];
+        }
         return;
     }
     // 网络地址,或沙盒路径URL
@@ -92,6 +89,9 @@
     if (image)
     {
         [self setImage:image];
+    }else{
+        //改进：设置占位图片
+        [self setImage:placeholderImg];
     }
 }
 @end
@@ -214,7 +214,7 @@ static int imagesCount = 3;
     //1. 修复bug,让其默认从第0页开始
     self.pageCtrl.currentPage = 0;
     SLImageView *imageView = self.scrollView.subviews[0];
-    [imageView asynSetImage:self.slImages[0]];
+    [imageView asynSetImage:self.slImages[0] placeholderImage:self.placeholderImg];
     //2. 修复bug, 让其加载完成，就展示第二个imageView
     self.scrollView.contentOffset = CGPointMake(SLBannerViewWidth, 0);
 }
@@ -280,7 +280,7 @@ static int imagesCount = 3;
         imageView.tag = index;//1. 3  2.0  3.1
         //        imageView.image = [UIImage imageNamed:self.slImages[index]];
         //异步优化图片设置
-        [imageView asynSetImage:self.slImages[index]];//1. 3   2.0  3.1
+        [imageView asynSetImage:self.slImages[index] placeholderImage:self.placeholderImg];//1. 3   2.0  3.1
         
         
         //同时设置title (图片和标题是对应的, 但是当前title和当前要展示的image属于错位1个单位的关系,实际上是延迟了一个单位，所以需要重新计算)
@@ -359,8 +359,10 @@ static int imagesCount = 3;
 - (void)startTimerWithTimeInterval:(NSTimeInterval)timeInterval
 {
     if (!_timer.isValid) {
+        //该方法内部自动添加到runloop中，并且运行模式设为默认
         _timer = [NSTimer scheduledTimerWithTimeInterval:timeInterval target:self selector:@selector(nextPage) userInfo:nil repeats:YES];
         //定时器线程阻塞问题，设置timer在runloop中模式为CommonModes
+        //这是并不是一种真正的mode,占位用的，标签，凡是添加到CommonModes中的事件都会被同时添加到打上commond标签的运行模式上
         [[NSRunLoop mainRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
     }
 }
