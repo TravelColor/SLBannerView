@@ -116,7 +116,7 @@ NSLog(@"++++++++++songlei点击了%ld ++++++++++", index);
  //            [self setImage:[UIImage imageNamed:@"SLPlaceholderImageName.jpg" inBundle:bundle compatibleWithTraitCollection:nil]];//查百度的方法，也不显示。后续再更新。如果有好的方法和建议， 请Pull Requests我
  //        }
  ```
-- 查阅了部分百度知识点，自己封装，在维护。暂未发现bug
+- 此轮播图暂未发现bug
 - Copyright © 2018年 Travelcolor. All rights reserved.
 ### 结语
 - 如果你在使用过程中遇到Bug，希望你能Issues我
