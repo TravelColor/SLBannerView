@@ -1,10 +1,10 @@
 # SLBannerView【快捷创建高性能轮播图】
 The advertising rotation diagram in the App is packaged into an independent module to simplify the development process
-# Preview gif 
- ![预览GIF](https://tool.gifhome.com/giftools/compress/preview?name=3fc0f72f65b1be44e9586e233321f184&w=240)
+
 -  SLBannerViewDemo <https://github.com/TravelColor/SLBannerView>
 -  个人邮箱：songleitravel@163.com
-
+### Preview gif 
+ ![预览GIF](http://www.code4app.com/data/attachment/forum/201809/02/120544m8o9xht800dh04fg.gif)
 ## Installation 【安装】
 ### From CocoaPods 【使用CocoaPods】
 ```
