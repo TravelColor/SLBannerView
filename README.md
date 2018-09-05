@@ -1,6 +1,7 @@
 # SLBannerView【快捷创建高性能轮播图】
 The advertising rotation diagram in the App is packaged into an independent module to simplify the development process
-
+# Preview gif 
+ ![预览GIF](https://tool.gifhome.com/giftools/compress/preview?name=3fc0f72f65b1be44e9586e233321f184&w=240)
 -  SLBannerViewDemo <https://github.com/TravelColor/SLBannerView>
 -  个人邮箱：songleitravel@163.com
 
