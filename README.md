@@ -77,7 +77,7 @@ SLBannerViewDelegate Method
 */
 - (void)bannerView:(SLBannerView *)banner didClickImagesAtIndex:(NSInteger)index
 {
-NSLog(@"++++++++++宋雷 点击了%ld ++++++++++", index);
+NSLog(@"++++++++++songlei 点击了%ld ++++++++++", index);
 }
 
 @end
@@ -115,7 +115,10 @@ NSLog(@"++++++++++宋雷 点击了%ld ++++++++++", index);
  //            [self setImage:[UIImage imageNamed:@"SLPlaceholderImageName.jpg" inBundle:bundle compatibleWithTraitCollection:nil]];//查百度的方法，也不显示。后续再更新。如果有好的方法和建议， 请Pull Requests我
  //        }
  ```
+<<<<<<< HEAD
 - 查阅了部分百度知识点，自己封装，在维护。暂未发现bug
+=======
+>>>>>>> 5ffb207a40258620bb7b65ef3698cc211fd6e65a
 - Copyright © 2018年 Travelcolor. All rights reserved.
 ### 结语
 - 如果你在使用过程中遇到Bug，希望你能Issues我
