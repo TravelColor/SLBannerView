@@ -6,6 +6,7 @@ The advertising rotation diagram in the App is packaged into an independent modu
 
 ## Installation 【安装】
 ### From CocoaPods 【使用CocoaPods】
+- platform :ios, ‘9.0’
 ```
 //最新版本
  pod 'SLBannerView'
