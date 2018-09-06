@@ -10,7 +10,6 @@
 #import "SLBannerView.h"
 
 @interface ViewController () <SLBannerViewDelegate>
-
 @end
 
 @implementation ViewController
@@ -19,7 +18,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    /**
+     关键代码：1.3 --> 2 --> 3 --> 5，可快速创建轮播图
+     */
     //1.1 不建议
     //    SLBannerView *banner = [[SLBannerView alloc] init];
     //1.2 建议：xib快速创建
@@ -34,7 +35,7 @@
     //7.如果将要传入的数组有空值或图片路径不正确，建议在传入前设置占位图,否则第一次运行不显示占位图，
     //如果将要传入的数组不为空和图片路径都正确，占位图可不设
     banner.placeholderImg = [UIImage imageNamed:@"SLPlaceholderImageName.jpg"];
-    //3. 必须：需要传入的图片数组，设置了占位图，数组可以传空
+    //3. 需要传入的图片数组，如果设置了占位图，数组可以传空
     banner.slImages = @[
                         @"2.jpg",
                         @"http://img3.duitang.com/uploads/item/201601/03/20160103215632_M48zu.thumb.700_0.jpeg",
@@ -45,7 +46,7 @@
     //工程图片
 //    banner.slImages = @[@"1.jpg", @"2.jpg", @"3.jpg", @"4.jpg", @"5.jpg"];
     
-    //可选：设置标题
+    //设置标题
     banner.slTitles = @[@"第1张图片的标题", @"第2张图片的标题", @"第3张图片的标题", @"第4张图片的标题",@" 第5张图片的标题"];
     
     [banner.titleLabel setTextColor:[UIColor yellowColor]];
@@ -54,7 +55,7 @@
     //5. banner添加到UI上
     [self.view addSubview:banner];
     
-    //6. 可选设置动画，建议动画持续时间小于停留时间
+    //6. 自定义动画时间，建议动画持续时间小于停留时间
     banner.durTimeInterval = 0.5;
     banner.imgStayTimeInterval = 3;
     
@@ -68,7 +69,7 @@
  */
 - (void)bannerView:(SLBannerView *)banner didClickImagesAtIndex:(NSInteger)index
 {
-    NSLog(@"++++++++++宋雷 点击了%ld ++++++++++", index);
+    NSLog(@"++++++++++songlei 点击了%ld ++++++++++", index);
 }
 
 @end

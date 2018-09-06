@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E64374F2140DE5800DE14A9 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E64374E2140DE5800DE14A9 /* RootViewController.m */; };
 		5EE194FF213AA11B0030DE2A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EE194FE213AA11B0030DE2A /* AppDelegate.m */; };
 		5EE19502213AA11B0030DE2A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EE19501213AA11B0030DE2A /* ViewController.m */; };
 		5EE19505213AA11B0030DE2A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EE19503213AA11B0030DE2A /* Main.storyboard */; };
@@ -24,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5E64374D2140DE5800DE14A9 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		5E64374E2140DE5800DE14A9 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		5EE194FA213AA11B0030DE2A /* SLBannerViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SLBannerViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EE194FD213AA11B0030DE2A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5EE194FE213AA11B0030DE2A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -79,6 +82,8 @@
 				5EE19697213B5DE90030DE2A /* SLBannerView */,
 				5EE19500213AA11B0030DE2A /* ViewController.h */,
 				5EE19501213AA11B0030DE2A /* ViewController.m */,
+				5E64374D2140DE5800DE14A9 /* RootViewController.h */,
+				5E64374E2140DE5800DE14A9 /* RootViewController.m */,
 				5EE194FD213AA11B0030DE2A /* AppDelegate.h */,
 				5EE194FE213AA11B0030DE2A /* AppDelegate.m */,
 				5EE19503213AA11B0030DE2A /* Main.storyboard */,
@@ -195,6 +200,7 @@
 				5EE1969C213B5DE90030DE2A /* SLBannerView.m in Sources */,
 				5EE1950D213AA11C0030DE2A /* main.m in Sources */,
 				5EE194FF213AA11B0030DE2A /* AppDelegate.m in Sources */,
+				5E64374F2140DE5800DE14A9 /* RootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

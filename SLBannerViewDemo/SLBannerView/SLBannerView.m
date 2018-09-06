@@ -280,7 +280,7 @@ static int imagesCount = 3;
         imageView.tag = index;//1. 3  2.0  3.1
         //        imageView.image = [UIImage imageNamed:self.slImages[index]];
         //异步优化图片设置
-        [imageView asynSetImage:self.slImages[index] placeholderImage:self.placeholderImg];//1. 3   2.0  3.1
+        [imageView asynSetImage:self.slImages[index] placeholderImage:_placeholderImg];//1. 3   2.0  3.1
         
         
         //同时设置title (图片和标题是对应的, 但是当前title和当前要展示的image属于错位1个单位的关系,实际上是延迟了一个单位，所以需要重新计算)
@@ -320,7 +320,7 @@ static int imagesCount = 3;
         }
     }
     //设置圆点的动画
-    [UIView animateWithDuration:self.durTimeInterval animations:^{
+    [UIView animateWithDuration:_durTimeInterval animations:^{
         [self.pageCtrl setCurrentPage:page];
     }];
 }
@@ -370,7 +370,7 @@ static int imagesCount = 3;
 /** 开始定时器 */
 - (void)startTimer
 {
-    [self startTimerWithTimeInterval:self.imgStayTimeInterval];
+    [self startTimerWithTimeInterval:_imgStayTimeInterval];
 }
 
 /** 结束定时器 */
@@ -403,6 +403,24 @@ static int imagesCount = 3;
     if ([self.delegate respondsToSelector:@selector(bannerView:didClickImagesAtIndex:)]) {
         [self.delegate bannerView:self didClickImagesAtIndex:imageView.tag];
     }
+}
+
+/**
+ 当本视图的父类视图改变的时候，系统会自动执行此方法，新父类视图有可能是nil
+
+ @param newSuperview 新的父类视图
+ */
+- (void)willMoveToSuperview:(UIView *)newSuperview
+{
+    if (!newSuperview && self.timer) {
+        [self.timer invalidate];
+        self.timer = nil;
+    }
+}
+
+- (void)dealloc
+{
+    NSLog(@"+++++++++++");
 }
 
 @end
