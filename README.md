@@ -13,7 +13,7 @@ The advertising rotation diagram in the App is packaged into an independent modu
  pod 'SLBannerView'
  或者
  //指定版本
- pod 'SLBannerView', '~> 1.0.3'
+ pod 'SLBannerView', '~> 1.0.4'
 ```
 ## The basic use 【基本使用】
 -   下载好SLBannerView, 只需要将工程内的同名文件夹导入项目中即可使用！使用简单！开发效率高
@@ -105,18 +105,11 @@ NSLog(@"++++++++++songlei点击了%ld ++++++++++", index);
 12.  修复bug,让其默认从第0页开始，给self.pageCtrl.currentPage = 0;，[imageView asynSetImage:self.slImages[0]];
 13.   修复bug, 让其加载完成，就展示第二个imageView: self.scrollView.contentOffset = CGPointMake(BannerViewWidth, 0);
 14.  如果将要传入的数组有空值或图片路径不正确，建议在传入前设置占位图
+15.  增加nonnull、nullable关键字，重写willMoveToSuperview:方法，销毁定时器，解决释放问题。
 - 版本1.0.2 删除占位图片
 - 版本1.0.3 增加占位图片
- ```objc
- 
- // 设置占位图片，pods不显示
- 
- //        if (placeholderImgName) {
- //         [self setImage:[UIImage imageNamed:placeholderImgName]];//pods导入后，不显示占位图。直接拖到工程里可以显示
- //            NSBundle *bundle = [NSBundle bundleWithIdentifier:@"org.cocoapods.SLBannerView"];
- //            [self setImage:[UIImage imageNamed:@"SLPlaceholderImageName.jpg" inBundle:bundle compatibleWithTraitCollection:nil]];//查百度的方法，也不显示。后续再更新。如果有好的方法和建议， 请Pull Requests我
- //        }
- ```
+- 版本1.0.4 增加关键字，解决释放问题
+
 - 此轮播图暂未发现bug
 - Copyright © 2018年 Travelcolor. All rights reserved.
 ### 结语
