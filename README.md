@@ -3,7 +3,8 @@ The advertising rotation diagram in the App is packaged into an independent modu
 
 -  SLBannerViewDemo <https://github.com/TravelColor/SLBannerView>
 -  个人邮箱：songleitravel@163.com
-
+### Preview gif 
+ ![预览GIF](http://www.code4app.com/data/attachment/forum/201809/02/120544m8o9xht800dh04fg.gif)
 ## Installation 【安装】
 ### From CocoaPods 【使用CocoaPods】
 - platform :ios, ‘9.0’
@@ -86,7 +87,7 @@ NSLog(@"++++++++++songlei点击了%ld ++++++++++", index);
 ```
 
 
-思路及改进说明：
+- 思路及改进说明：
 1.    构建基本UI
         1.1   封装
 2.    设置scrollView代理
@@ -116,7 +117,7 @@ NSLog(@"++++++++++songlei点击了%ld ++++++++++", index);
  //            [self setImage:[UIImage imageNamed:@"SLPlaceholderImageName.jpg" inBundle:bundle compatibleWithTraitCollection:nil]];//查百度的方法，也不显示。后续再更新。如果有好的方法和建议， 请Pull Requests我
  //        }
  ```
-- 查阅了部分百度知识点，自己封装，在维护。暂未发现bug
+- 此轮播图暂未发现bug
 - Copyright © 2018年 Travelcolor. All rights reserved.
 ### 结语
 - 如果你在使用过程中遇到Bug，希望你能Issues我
