@@ -418,9 +418,4 @@ static int imagesCount = 3;
     }
 }
 
-- (void)dealloc
-{
-    NSLog(@"+++++++++++");
-}
-
 @end
