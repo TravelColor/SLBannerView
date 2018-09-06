@@ -22,7 +22,6 @@
 /** 要展示的图片数组,支持网络，本地，工程图片可用 */
 @property (nonnull, nonatomic, strong) NSArray *slImages;
 
-@property (nonatomic, strong) NSArray *slTitles;
 /** 要展示的标题数组 */
 @property (nullable, nonatomic, strong) NSArray *slTitles;
 /** 每张图片的停留时间，默认2秒 */
