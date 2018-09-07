@@ -106,10 +106,11 @@ NSLog(@"++++++++++songlei点击了%ld ++++++++++", index);
 13.   修复bug, 让其加载完成，就展示第二个imageView: self.scrollView.contentOffset = CGPointMake(BannerViewWidth, 0);
 14.  如果将要传入的数组有空值或图片路径不正确，建议在传入前设置占位图
 15.  增加nonnull、nullable关键字，重写willMoveToSuperview:方法，销毁定时器，解决释放问题。
+16.  当一张图片时，移除轮播控件，只展示一张图片
 - 版本1.0.2 删除占位图片
 - 版本1.0.3 增加占位图片
 - 版本1.0.4 增加关键字，解决释放问题
-
+- 版本1.0.5 当一张图片时，移除轮播控件，只展示一张图片
 - 此轮播图暂未发现bug
 - Copyright © 2018年 Travelcolor. All rights reserved.
 ### 结语
