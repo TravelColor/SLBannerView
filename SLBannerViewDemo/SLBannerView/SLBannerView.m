@@ -152,7 +152,7 @@ static int imagesCount = 3;
         UIPageControl *pageCtrl = [[UIPageControl alloc] init];
         [self addSubview:pageCtrl];
         self.pageCtrl = pageCtrl;
-        
+
         [self setup];
     }
     return self;
@@ -217,6 +217,20 @@ static int imagesCount = 3;
     [imageView asynSetImage:self.slImages[0] placeholderImage:self.placeholderImg];
     //2. 修复bug, 让其加载完成，就展示第二个imageView
     self.scrollView.contentOffset = CGPointMake(SLBannerViewWidth, 0);
+    
+}
+
+/** 设置单张图片不轮播 */
+- (void)setupSingleImage
+{
+    SLImageView *imageView = [[SLImageView alloc] initWithFrame:self.bounds];
+    [self addSubview:imageView];
+    [imageView asynSetImage:self.slImages.firstObject placeholderImage:_placeholderImg];
+    imageView.tag = 0;
+    //给pic设置点击手势
+    imageView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageViewClicked:)];
+    [imageView addGestureRecognizer:tap];
 }
 
 #pragma mark - 重写slImages，slTitles的set方法
@@ -227,8 +241,8 @@ static int imagesCount = 3;
     {
         _slImages = slImages;
     }
-    
-    if (slImages.count > 0)
+    //当图片数组大于一张时启动轮播
+    if (slImages.count > 1)
     {
         //设置pageCtrl
         self.pageCtrl.numberOfPages = slImages.count;
@@ -239,6 +253,10 @@ static int imagesCount = 3;
         
         //开始定时器
         [self startTimer];
+    } else {
+        //单张移除子视图，并设置一张图片不轮播
+        [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+        [self setupSingleImage];
     }
     
 }
@@ -361,8 +379,7 @@ static int imagesCount = 3;
     if (!_timer.isValid) {
         //该方法内部自动添加到runloop中，并且运行模式设为默认
         _timer = [NSTimer scheduledTimerWithTimeInterval:timeInterval target:self selector:@selector(nextPage) userInfo:nil repeats:YES];
-        //定时器线程阻塞问题，设置timer在runloop中模式为CommonModes
-        //这是并不是一种真正的mode,占位用的，标签，凡是添加到CommonModes中的事件都会被同时添加到打上commond标签的运行模式上
+        //定时器线程阻塞问题，设置为Common（NSRunloopCommonModes）：模式合集。默认包括Default，Modal，Event Tracking三大模式，可以处理几乎所有事件。
         [[NSRunLoop mainRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
     }
 }

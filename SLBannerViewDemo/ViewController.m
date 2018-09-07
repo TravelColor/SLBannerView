@@ -15,6 +15,8 @@
 @implementation ViewController
 
 #define SLBannerWidth self.view.frame.size.width
+#define iPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
+#define SLNAVIGATION_BAR_HEIGHT (iPhoneX ? 88.f : 64.f)
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,7 +31,7 @@
     SLBannerView *banner = [SLBannerView bannerView];
     
     //2. banner 的位置和大小
-    banner.frame = CGRectMake(0, 50, SLBannerWidth, SLBannerWidth);
+    banner.frame = CGRectMake(0, SLNAVIGATION_BAR_HEIGHT, SLBannerWidth, SLBannerWidth);
     
     
     //7.如果将要传入的数组有空值或图片路径不正确，建议在传入前设置占位图,否则第一次运行不显示占位图，
@@ -56,8 +58,8 @@
     [self.view addSubview:banner];
     
     //6. 自定义动画时间，建议动画持续时间小于停留时间
-    banner.durTimeInterval = 0.5;
-    banner.imgStayTimeInterval = 3;
+    banner.durTimeInterval = 0.2;
+    banner.imgStayTimeInterval = 2.5;
     
 }
 
