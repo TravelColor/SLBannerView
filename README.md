@@ -13,7 +13,7 @@ The advertising rotation diagram in the App is packaged into an independent modu
  pod 'SLBannerView'
  或者
  //指定版本
- pod 'SLBannerView', '~> 1.0.4'
+ pod 'SLBannerView', '~> 1.0.5'
 ```
 ## The basic use 【基本使用】
 -   下载好SLBannerView, 只需要将工程内的同名文件夹导入项目中即可使用！使用简单！开发效率高
