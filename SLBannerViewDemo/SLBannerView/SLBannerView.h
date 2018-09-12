@@ -20,10 +20,10 @@
 @interface SLBannerView : UIView
 
 /** 要展示的图片数组,支持网络，本地，工程图片可用 */
-@property (nonnull, nonatomic, strong) NSArray *slImages;
+@property (nonnull, nonatomic, copy) NSArray *slImages;
 
 /** 要展示的标题数组 */
-@property (nullable, nonatomic, strong) NSArray *slTitles;
+@property (nullable, nonatomic, copy) NSArray *slTitles;
 /** 每张图片的停留时间，默认2秒 */
 @property (nonatomic, assign) NSTimeInterval imgStayTimeInterval;
 /** 图片的切换动画持续时间，默认0.3秒 */
