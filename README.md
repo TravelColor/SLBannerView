@@ -13,7 +13,7 @@ The advertising rotation diagram in the App is packaged into an independent modu
  pod 'SLBannerView'
  或者
  //指定版本
- pod 'SLBannerView', '~> 1.0.5'
+ pod 'SLBannerView', '~> 1.0.6'
 ```
 ## The basic use 【基本使用】
 -   下载好SLBannerView, 只需要将工程内的同名文件夹导入项目中即可使用！使用简单！开发效率高
@@ -111,6 +111,7 @@ NSLog(@"++++++++++songlei点击了%ld ++++++++++", index);
 - 版本1.0.3 增加占位图片
 - 版本1.0.4 增加关键字，解决释放问题
 - 版本1.0.5 当一张图片时，移除轮播控件，只展示一张图片
+- 版本1.0.6 关键字修饰问题
 - 此轮播图暂未发现bug
 - Copyright © 2018年 Travelcolor. All rights reserved.
 ### 结语
